@@ -203,6 +203,28 @@ const ProductsData = ({children}) => {
         quantity: 1,
         description: "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes.",
         image: "https://i.pinimg.com/1200x/a8/52/da/a852da548162bd3a90b0ab1293ac49e3.jpg"
+    },
+    {
+        id: 19,
+        title: "Forza Horizon 5",
+        genre: "Racing",
+        price: 4799,
+        discount: 50,
+        finalPrice: 2399,
+        quantity: 1,
+        description: "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes.",
+        image: "https://i.pinimg.com/1200x/cb/6f/e3/cb6fe35de2c4cdbf039ed2cb56ca58ad.jpg"
+    },
+    {
+        id: 20,
+        title: "Assetto Corsa",
+        genre: "Racing",
+        price: 4799,
+        discount: 50,
+        finalPrice: 2399,
+        quantity: 1,
+        description: "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes.",
+        image: "https://i.pinimg.com/736x/c0/fa/52/c0fa52a3f90b6433827c0ca334241c77.jpg"
     }
 ];
 

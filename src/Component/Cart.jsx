@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa'
 import { ProductApi } from '../ProductApi/ProductApi'
 import { LuPlus, LuShoppingCart, LuTrash2, LuMinus } from 'react-icons/lu'
+import { IoBagRemoveSharp, IoRemove, IoRemoveCircle } from 'react-icons/io5';
+import { MdPersonRemoveAlt1, MdRemoveShoppingCart } from 'react-icons/md';
 
 
 export const Cart = () => {
@@ -44,6 +46,10 @@ export const Cart = () => {
 
     //  Payment gateway 
     const handlePayment =(totalprice)=>{
+          if (typeof window.Razorpay === 'undefined') {
+        alert("Razorpay failed to load. Check your internet connection.");
+        return;
+    }
         var option = {
         key:"rzp_test_SPuGoebdfYwF11",
         key_secret:"FJHbFmDWPDwHpWsqo8qJWuAa",
@@ -95,7 +101,7 @@ export const Cart = () => {
                         {newProduct.length} Games
                     </span>
                     {
-                      newProduct.length >0 &&   <span onClick={handleRemove} className='bg-red-400 text-white px-2 py-1 rounded text-sm'>Remove</span>
+                      newProduct.length >0 &&   <span onClick={handleRemove} className='bg-red-400 text-white px-2 py-2 rounded text-xs flex items-center '><MdRemoveShoppingCart className='text-lg' />Remove All</span>
   
                     }
                 </div>
@@ -156,7 +162,7 @@ export const Cart = () => {
                 </div>
                    
                 {/* Footer / Checkout */}
-                <div className='border-t border-gray-100 bg-white p-6'>
+                <div role='button' tabIndex={0} onClick={()=>handlePayment(totalPrice)} className='border-t  border-gray-100 bg-white p-6'>
                     <button 
                         disabled={newProduct.length === 0}
                         className='w-full bg-green-700 hover:bg-green-800 disabled:bg-gray-300 text-white rounded-2xl p-4 flex justify-between items-center shadow-xl active:scale-[0.98] transition-all group'
@@ -165,12 +171,13 @@ export const Cart = () => {
                             <p className='text-[10px] uppercase opacity-70 font-black tracking-widest'>Total Payable</p>
                             <h1 className='text-xl font-black'>₹{totalPrice.toLocaleString()}</h1>
                         </div>
-                        <div onClick={()=>handlePayment(totalPrice)} className='flex items-center font-bold text-lg'>
+                        <div className='flex items-center font-bold text-lg'>
                             Place Order 
                             <FaAngleRight className='ml-2 text-2xl group-hover:translate-x-1 transition-transform' />
                         </div>
                     </button>
                 </div>
+                
             </div>
            
         </aside>

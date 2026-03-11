@@ -10,16 +10,16 @@ const Footer = () => {
     return (
         <footer className="bg-white text-gray-950 border-t border-gray-800">
             {/*  Branding */}
-            <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="max-w-7xl mx-auto px-6 py-18 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 
                 {/* Brand & Mission */}
                 <div className="space-y-6">
-                    <div className="flex items-center gap-2 cursor-pointer group">
-                        <div className="p-2 rounded-xl bg-green-600 transition-transform group-hover:scale-110">
-                            <FaGamepad className="text-3xl text-white" />
+                    <div className="flex  items-center gap-2 cursor-pointer group">
+                        <div className=" rounded-xl  transition-transform group-hover:scale-110">
+                            <FaGamepad className="text-4xl text-green-600" />
                         </div>
-                        <h1 className="font-black text-2xl tracking-tighter uppercase italic">
-                            Gamer <span className="text-green-500">Zone</span>
+                        <h1 className="font-black text-2xl tracking-tighter uppercase ">
+                            Gamer <span className="text-green-500 logo text-3xl">Zone</span>
                         </h1>
                     </div>
                     <p className="text-gray-400 text-sm leading-relaxed">
@@ -27,7 +27,7 @@ const Footer = () => {
                     </p>
                     <div className="flex gap-4">
                         {[FaFacebook, FaTwitter, FaInstagram, FaDiscord, FaYoutube].map((Icon, i) => (
-                            <a key={i} href="#" className="w-10 h-10 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all">
+                            <a key={i} href="#" className="h-7 w-8  md:w-10 md:h-10 rounded-full bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all">
                                 <Icon size={18} />
                             </a>
                         ))}
@@ -36,7 +36,7 @@ const Footer = () => {
 
                 {/* Quick Links */}
                 <div>
-                    <h4 className="font-bold text-lg mb-6 flex items-center gap-2">
+                    <h4 className="font-bold  text-lg mb-6 flex items-center gap-2">
                         <span className="w-1 h-5 bg-green-500 rounded-full"></span> Quick Links
                     </h4>
                     <ul className="space-y-3 text-gray-400 text-sm">
