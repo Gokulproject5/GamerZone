@@ -18,12 +18,12 @@ const Footer = () => {
                         <div className=" rounded-xl  transition-transform group-hover:scale-110">
                             <FaGamepad className="text-4xl text-green-600" />
                         </div>
-                        <h1 className="font-black text-2xl tracking-tighter uppercase ">
+                        <h1 className="font-black text-2xl  uppercase ">
                             Gamer <span className="text-green-500 logo text-3xl">Zone</span>
                         </h1>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                        Your ultimate destination for the latest titles, exclusive gear, and a thriving gaming community. Level up your library with Gamer Zone.
+                    <p className="text-gray-400 text-sm leading-relaxed text-justify ">
+                        Your ultimate destination for the latest games, exclusive gear, and a thriving gaming community. Level up your library with Gamer Zone.
                     </p>
                     <div className="flex gap-4">
                         {[FaFacebook, FaTwitter, FaInstagram, FaDiscord, FaYoutube].map((Icon, i) => (

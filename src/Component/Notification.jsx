@@ -23,7 +23,7 @@ const Notification = () => {
         <>
             <div className={`
     ${alert ? "translate-x-0 opacity-100" : "translate-x-full  opacity-0"} 
-    fixed top-20 right-5 transition-all duration-500 ease-in-out
+    fixed top-27 right-5 transition-all duration-500 ease-in-out
     flex text-sm z-50 items-center py-3 px-4 
     bg-white rounded-lg shadow-xl shadow-gray-950 text-green-600
 `}>

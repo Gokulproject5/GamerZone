@@ -17,7 +17,7 @@ const Header = () => {
 
                 {/* Brand LOGO */}
                 <div className='flex items-center cursor-pointer group gap-2'>
-                    <div className='p-2 rounded-xl bg-green-50 group-hover:bg-green-600 transition-colors duration-300'>
+                    <div className='p-2 rounded-xl bg-gray-100 group-hover:bg-green-600 transition-colors duration-300'>
                         <FaGamepad className='text-3xl md:text-4xl text-green-600 group-hover:text-white transition-colors' />
                     </div>
                     <h1 className='font-black  text-gray-900 text-[13px] sm:text-xl md:text-2xl tracking-tighter uppercase   sm:block'>
@@ -27,7 +27,7 @@ const Header = () => {
 
                 {/* Search Bar */}
                 <div className='md:flex-1 flex-1 md:max-w-md mx-2 sm:mx-4 md:mx-10 relative group'>
-                    <div className='flex items-center bg-gray-200 rounded-full px-2 py-1 md:px-4 md:py-2.5 border-2 border-transparent focus-within:border-green-500 focus-within:bg-white transition-all shadow-inner'>
+                    <div className='flex items-center bg-gray-100 rounded-full px-2 py-1 md:px-4 md:py-2.5 border-2 border-transparent focus-within:border-green-500 focus-within:bg-white transition-all shadow-inner'>
                         <LuSearch className='text-xl text-green-600 md:text-gray-400 group-focus-within:text-green-600' />
                         <input 
                             type="text" 
@@ -59,7 +59,7 @@ const Header = () => {
                         </button>
                     </div>
                     <div title='Gokul' className='border-2 hover:scale-105 hover:bg-gray-50 shadow-inner shadow-gray-100 border-green-500 h-8 w-8 text-green-600 rounded-full text-center py-1'>
-                         <h1>G</h1>
+                         <a target='_blank' href='https://github.com/Gokulproject5/'>G</a>
                     </div>
                 </nav>
             </div>

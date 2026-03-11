@@ -3,7 +3,7 @@ import { ProductApi } from '../ProductApi/ProductApi'
 import { BsCart3, BsCheckCircle } from 'react-icons/bs';
 import { FaCircleCheck } from 'react-icons/fa6';
 import { motion, AnimatePresence } from 'framer-motion';
-import { span } from 'framer-motion/client';
+
 
 export const Card = () => {
     const { products, setNewProduct, newProduct } = useContext(ProductApi);

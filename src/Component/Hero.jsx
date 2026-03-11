@@ -90,7 +90,7 @@ const previous = () => sliderRef.current?.slickPrev();
                                 <div className="absolute inset-0 flex flex-col justify-center md:justify-end p-1 md:p-16  h-160 bg-gradient-to-t from-gray-950 via-transparent to-transparent">
                                     <div  className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                         <span className="bg-green-600 text-[10px] font-black px-1 py-0.5 md:px-4 md:py-1.5 rounded-md uppercase tracking-[3px] shadow-lg shadow-green-900/20">
-                                            Featured Title
+                                            Featured Game
                                         </span>
                                         <h2 className="md:text-4xl  font-black mt-4 drop-shadow-2xl  uppercase tracking-tighter">
                                             {item.title}
