@@ -3,6 +3,7 @@ import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/f
 import { ProductApi } from '../ProductApi/ProductApi'
 import { LuPlus, LuShoppingCart, LuTrash2, LuMinus } from 'react-icons/lu'
 
+
 export const Cart = () => {
     const { open, setOpen, newProduct, setNewProduct } = useContext(ProductApi);
     const [show, setShow] = useState(true);
@@ -41,11 +42,43 @@ export const Cart = () => {
    setNewProduct([])
     }
 
+    //  Payment gateway 
+    const handlePayment =(totalprice)=>{
+        var option = {
+        key:"rzp_test_SPuGoebdfYwF11",
+        key_secret:"FJHbFmDWPDwHpWsqo8qJWuAa",
+        amount:totalprice *100,
+        currency:"INR",
+        name:"Gamer_Zone",
+        description:"for Testing",
+        handler:function(response){
+            alert(`Payment Successfull Payement id:${response.razorpay_payment_id}`
+                
+            );
+        },
+        prefill:{
+            name:"Gamer_zone",
+            email:"agokul110@gmail.com",
+            contact:"8608093474",
+        },notes:{
+            address:"Razorpay Corporate office"
+        },
+        theme:{
+            color:"#128a24"
+        }
+
+    };
+    var pay = new window.Razorpay(option);
+    pay.open();
+  
+    
+  }
     if (!open) return null; 
 
     return (
         <aside className='fixed inset-0 z-[120]'>
             {/* Backdrop */}
+            <title>My Cart | Gamer Zone</title>
             <div className='absolute inset-0 bg-black/60 backdrop-blur-sm' onClick={() => setOpen(false)}></div>
 
             <div className='fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl flex flex-col'>
@@ -62,7 +95,7 @@ export const Cart = () => {
                         {newProduct.length} Games
                     </span>
                     {
-                      newProduct.length >1 &&   <span onClick={handleRemove} className='bg-red-400 text-white px-2 py-1 rounded text-sm'>Remove</span>
+                      newProduct.length >0 &&   <span onClick={handleRemove} className='bg-red-400 text-white px-2 py-1 rounded text-sm'>Remove</span>
   
                     }
                 </div>
@@ -121,7 +154,7 @@ export const Cart = () => {
                         ))
                     )}
                 </div>
-
+                   
                 {/* Footer / Checkout */}
                 <div className='border-t border-gray-100 bg-white p-6'>
                     <button 
@@ -132,13 +165,14 @@ export const Cart = () => {
                             <p className='text-[10px] uppercase opacity-70 font-black tracking-widest'>Total Payable</p>
                             <h1 className='text-xl font-black'>₹{totalPrice.toLocaleString()}</h1>
                         </div>
-                        <div className='flex items-center font-bold text-lg'>
+                        <div onClick={()=>handlePayment(totalPrice)} className='flex items-center font-bold text-lg'>
                             Place Order 
                             <FaAngleRight className='ml-2 text-2xl group-hover:translate-x-1 transition-transform' />
                         </div>
                     </button>
                 </div>
             </div>
+           
         </aside>
     );
 };
