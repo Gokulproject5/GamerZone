@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import "tailwindcss";
+
+body{
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+ body::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar .cart{
+  display: block;
+}
+.slick-dots {
+  position: absolute;
+  bottom: -40px; 
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+
+.custom-dots {
+    bottom: 25px !important;
+}
+
+
+.custom-dots li button:before {
+    font-size: 12px !important;
+    color: white !important;
+    opacity: 0.5;
+}
+
+
+.custom-dots li.slick-active button:before {
+    color: #22c55e !important; 
+    opacity: 1;
+}
+
+
+.custom-dots li {
+    width: 30px !important;
+    margin: 0 5px !important;
+}
+
+.custom-dots li button:before {
+    content: '' !important;
+    width: 30px !important;
+    height: 4px !important;
+    background: white !important;
+    border-radius: 2px;
+}
+
+.custom-dots li.slick-active button:before {
+    background: #22c55e !important;
+}
