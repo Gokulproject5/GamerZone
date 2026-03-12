@@ -7,6 +7,7 @@ import ResetPassword from "./Component/ResetPassword"
 import ProductsData from "./ProductApi/ProductsData"
 import { BrowserRouter as Router , Route ,Routes } from "react-router"
 import Footer from  "./Component/Footer"
+import SignUp from "./Component/SignUp"
 function App() {
 
 
@@ -22,6 +23,7 @@ function App() {
 
           <Route path="/" element={<Hero />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/update-password" element={<ResetPassword />} />
         </Routes>
