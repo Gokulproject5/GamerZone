@@ -1,19 +1,33 @@
 import { Cart } from "./Component/Cart"
+import Dashboard from "./Component/Dashboard"
 import Header from "./Component/Header"
 import Hero from "./Component/Hero"
+import Login from "./Component/Login"
+import ResetPassword from "./Component/ResetPassword"
 import ProductsData from "./ProductApi/ProductsData"
-
-
+import { BrowserRouter as Router , Route ,Routes } from "react-router"
+import Footer from  "./Component/Footer"
 function App() {
 
 
   return (
     <>  
     <ProductsData>
-      <Header />
-      <Hero />
-      <Cart />
+     
+      <Router>
+         <Header />
+         <Cart />
+         
+        <Routes >
+
+          <Route path="/" element={<Hero />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/update-password" element={<ResetPassword />} />
+        </Routes>
+      </Router>
       </ProductsData>
+      
     </>
   )
 }

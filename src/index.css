@@ -8,6 +8,12 @@ body{
   font-style: normal;
 
 }
+h1,h2{
+  font-family: "Varela Round", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+
+}
  body::-webkit-scrollbar {
   display: none;
 }
@@ -109,4 +115,30 @@ body{
         transform: translateX(0); /* Settle at home */
         opacity: 1;
     }
+    
 }
+/* <div className="flex-1 max-w-xl mx-10 relative hidden sm:block">
+                    <LuSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input 
+                        type="text" 
+                        placeholder="Search for games..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-gray-50 p-3 pl-12 rounded-2xl border-none outline-none focus:ring-2 ring-green-100 transition-all font-medium text-sm"
+                    />
+                </div>
+
+                <div className="flex items-center gap-6">
+                    <button onClick={() => setOpen(true)} className="relative p-2 hover:bg-gray-50 rounded-full transition-colors">
+                        <LuShoppingCart size={24} />
+                        {newProduct.length > 0 && (
+                            <span className="absolute top-0 right-0 bg-green-500 text-black text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                                {newProduct.length}
+                            </span>
+                        )}
+                    </button>
+                    <button onClick={() => navigate('/Dashboard')} className="p-2 bg-black text-white rounded-2xl shadow-xl shadow-black/10 hover:bg-green-500 hover:text-black transition-all active:scale-95">
+                        <LuUser size={20} />
+                    </button>
+                </div>
+            </nav> */} */

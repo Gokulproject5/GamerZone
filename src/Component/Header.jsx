@@ -1,66 +1,118 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaGamepad } from 'react-icons/fa';
-import { PiShoppingCartSimpleFill } from 'react-icons/pi';
+import { PiShoppingCartSimple, PiShoppingCartSimpleFill } from 'react-icons/pi';
 import { ProductApi } from '../ProductApi/ProductApi';
-import { LuSearch } from 'react-icons/lu';
+import { LuSearch, LuLogOut, LuUser } from 'react-icons/lu';
+import { Link, useNavigate } from 'react-router';
+import supabase from '../data/supabaseClient';
 
 const Header = () => {
-    const { setOpen, open, newProduct } = useContext(ProductApi);
+    const { setOpen, open, newProduct, setNewProduct } = useContext(ProductApi);
     const [searchTerm, setSearchTerm] = useState("");
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
-    // Calculate total quantity of all items 
+    // Memoized total count for performance
     const totalItemsCount = newProduct.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
+    useEffect(() => {
+        // 1. Check initial session
+        const getInitialSession = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            setUser(session?.user ?? null);
+        };
+        getInitialSession();
+
+        // 2. Listen for ALL Auth changes (Login, Logout, Session Expired)
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+            setUser(session?.user ?? null);
+            
+            // SECURITY: If signed out, wipe the local cart state immediately
+            if (event === 'SIGNED_OUT') {
+                setNewProduct([]);
+                setOpen(false); // Close cart if open
+                navigate('/Login');
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [setNewProduct, setOpen, navigate]);
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) console.error("Error logging out:", error.message);
+    };
+
     return (
-        <header className='sticky top-0 z-50 shadow-md bg-white border-b border-gray-100'>
-            <div className='max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3 md:h-25'>
+        <header className='sticky top-0 z-50 shadow-sm bg-white backdrop-blur-md border-b border-gray-100'>
+            <div className='max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3 h-20'>
 
-                {/* Brand LOGO */}
-                <div className='flex items-center cursor-pointer group gap-2'>
-                    <div className='p-2 rounded-xl bg-gray-100 group-hover:bg-green-600 transition-colors duration-300'>
-                        <FaGamepad className='text-3xl md:text-4xl text-green-600 group-hover:text-white transition-colors' />
+                {/* LOGO */}
+                <Link to="/" className='flex items-center gap-2 group'>
+                    <div className='p-2 rounded-xl bg-green-50 group-hover:bg-green-600 transition-all duration-300'>
+                        <FaGamepad className='text-3xl text-green-600 group-hover:text-white' />
                     </div>
-                    <h1 className='font-black  text-gray-900 text-[13px] sm:text-xl md:text-2xl tracking-tighter uppercase   sm:block'>
-                        Gamer <span className=' logo sm:text-3xl '>Zone</span>
+                    <h1 className='font-black text-gray-900 text-xl tracking-tighter uppercase hidden sm:block'>
+                        Gamer <span className='text-green-600 text-2xl'>Zone</span>
                     </h1>
-                </div>
+                </Link>
 
-                {/* Search Bar */}
-                <div className='md:flex-1 flex-1 md:max-w-md mx-2 sm:mx-4 md:mx-10 relative group'>
-                    <div className='flex items-center bg-gray-100 rounded-full px-2 py-1 md:px-4 md:py-2.5 border-2 border-transparent focus-within:border-green-500 focus-within:bg-white transition-all shadow-inner'>
-                        <LuSearch className='text-xl text-green-600 md:text-gray-400 group-focus-within:text-green-600' />
+                {/* SEARCH BAR */}
+                <div className='flex-1 max-w-md mx-4 relative'>
+                    <div className='flex items-center bg-gray-100 rounded-full px-4 py-2.5 border-2 border-transparent focus-within:border-green-500 focus-within:bg-white transition-all shadow-inner'>
+                        <LuSearch className='text-gray-400 group-focus-within:text-green-600' />
                         <input 
                             type="text" 
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className='w-full outline-none bg-transparent text-sm  sm:block font-medium text-gray-800 px-3 placeholder:text-gray-400' 
+                            className='w-full outline-none bg-transparent text-sm font-medium text-gray-800 px-3' 
                             placeholder='Search your favorite games...' 
                         />
                     </div>
                 </div>
 
-                {/* Cart & Navigation */}
-                <nav className='flex items-center gap-2 space-x-2'>
-                    <div className='relative'>
-                     
+                {/* NAV ACTIONS */}
+                <nav className='flex items-center gap-3 md:gap-5'>
+                    
+                    {/* CART BUTTON */}
+                    <button 
+                        onClick={() => setOpen(!open)}
+                        className='relative p-2.5 rounded-xl hover:bg-gray-100 transition-colors active:scale-95'
+                    >
+                        <PiShoppingCartSimple className='text-2xl text-gray-700' />
                         {totalItemsCount > 0 && (
-                            <span className='absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white rounded-full text-[10px] font-black flex justify-center items-center z-20 shadow-lg border-2 border-white '>
+                            <span className='absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white rounded-full text-[10px] font-black flex justify-center items-center border-2 border-white animate-in zoom-in'>
                                 {totalItemsCount}
                             </span>
                         )}
+                    </button>
 
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className='relative p-2.5 rounded-xl hover:bg-green-600 group transition-all duration-300 active:scale-90 overflow-hidden'
+                    {/* AUTH PROFILE / LOGIN */}
+                    {user ? (
+                        <div className="flex items-center gap-2 border-l pl-4 border-gray-200">
+                            <Link to={'/Dashboard'} 
+                                title={user.email}
+                                className='h-10 w-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold shadow-md cursor-help border-2 border-white outline outline-1 outline-green-600'
+                            >
+                                {user.email.charAt(0).toUpperCase()}
+                            </Link>
+                            <button 
+                                onClick={handleLogout}
+                                className="p-2 hover:bg-red-50 text-red-500 rounded-lg transition-colors group"
+                                title="Logout"
+                            >
+                                <LuLogOut size={20} className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        </div>
+                    ) : (
+                        <Link 
+                            to='/Login' 
+                            className='flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-full font-bold text-sm hover:bg-green-600 transition-all shadow-lg active:scale-95'
                         >
-                            <PiShoppingCartSimpleFill
-                                className='text-2xl text-green-800 group-hover:text-white transition-colors'
-                            />
-                        </button>
-                    </div>
-                    <div title='Gokul' className='border-2 hover:scale-105 hover:bg-gray-50 shadow-inner shadow-gray-100 border-green-500 h-8 w-8 text-green-600 rounded-full text-center py-1'>
-                         <a target='_blank' href='https://github.com/Gokulproject5/'>G</a>
-                    </div>
+                            <LuUser size={18} />
+                            <span>Sign In</span>
+                        </Link>
+                    )}
                 </nav>
             </div>
         </header>

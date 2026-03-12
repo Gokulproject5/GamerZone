@@ -1,0 +1,22 @@
+INSERT INTO games (id, title, genre, price, discount, "finalPrice", quantity, description, image)
+VALUES
+(1, 'Super Mario Odyssey', 'Platformer', 3899, 15, 3314, 1, 'Join Mario on a massive, globe-trotting 3D adventure using his new ally Cappy to control enemies and objects.', 'https://i.pinimg.com/1200x/6d/4a/9f/6d4a9f9767d15a7458d9511137312694.jpg'),
+(2, 'The Legend of Zelda: Breath of the Wild', 'Adventure', 4999, 10, 4499, 1, 'Explore a vast open world of discovery, exploration, and adventure in this boundary-breaking new game.', 'https://i.pinimg.com/1200x/0d/79/d5/0d79d570c5f5042f1ef91869589a065e.jpg'),
+(3, 'Grand Theft Auto V', 'Action', 1999, 50, 999, 1, 'Experience the interweaving stories of three very different criminals as they risk everything.', 'https://i.pinimg.com/1200x/ca/57/e3/ca57e3f0d678370f2fe21754ed2cf992.jpg'),
+(4, 'Minecraft', 'Sandbox', 2499, 20, 1999, 1, 'Build anything you can imagine in the ultimate sandbox game.', 'https://i.pinimg.com/1200x/50/b9/08/50b90805e6f82c8feb5199b31801da90.jpg'),
+(5, 'The Witcher 3: Wild Hunt', 'RPG', 1599, 70, 479, 1, 'Become a professional monster slayer and embark on an epic journey.', 'https://i.pinimg.com/1200x/ef/1c/18/ef1c18270411f4fcaa0b3e6312c06234.jpg'),
+(6, 'Red Dead Redemption 2', 'Action-Adventure', 3299, 40, 1979, 1, 'An epic tale of life in America’s unforgiving heartland.', 'https://i.pinimg.com/1200x/61/6f/52/616f52a7f370060c729e0f19cde4e3eb.jpg'),
+(7, 'Elden Ring', 'Action RPG', 3599, 15, 3059, 1, 'Rise, Tarnished, and be guided by grace to brandish the power of the Elden Ring.', 'https://i.pinimg.com/1200x/40/7c/35/407c35641359ca9988faf5f157b60513.jpg'),
+(8, 'Among Us', 'Social Deduction', 199, 25, 149, 1, 'A game of teamwork and betrayal for 4-15 players... in space!', 'https://i.pinimg.com/1200x/1e/06/5c/1e065cb0cfb8e593a221589d1ed7f315.jpg'),
+(9, 'Fortnite', 'Battle Royale', 1999, 99, 0, 1, 'Drop into the island and compete to be the last one standing.', 'https://i.pinimg.com/1200x/34/ea/0a/34ea0abfd1e2a0b9155db38577259883.jpg'),
+(10, 'God of War', 'Action-Adventure', 3299, 50, 1649, 1, 'Kratos now lives as a man in the realm of Norse Deities and monsters.', 'https://i.pinimg.com/1200x/73/76/16/7376161d93cba6f27a286d593bbc3e5a.jpg'),
+(11, 'Cyberpunk 2077', 'Action RPG', 2999, 40, 1799, 1, 'An open-world, action-adventure story set in Night City.', 'https://i.pinimg.com/1200x/db/f6/b4/dbf6b4c7c27f20ed17522110fcc54e5d.jpg'),
+(12, 'Hades', 'Roguelike', 1100, 30, 770, 1, 'Defy the god of the dead as you hack and slash out of the Underworld.', 'https://i.pinimg.com/736x/56/39/41/563941c080e8b41919aacc9744a25539.jpg'),
+(13, 'Stardew Valley', 'Simulation', 479, 20, 383, 1, 'You’ve inherited your grandfather’s old farm plot. Can you live off the land?', 'https://i.pinimg.com/736x/68/4c/d1/684cd1e4024214a98f35f5dfe8cc2387.jpg'),
+(14, 'Halo Infinite', 'FPS', 3499, 10, 3149, 1, 'The Master Chief is ready to confront the most ruthless foe.', 'https://i.pinimg.com/1200x/ac/28/13/ac2813911d927607d0ab0b0f0123f31b.jpg'),
+(15, 'Animal Crossing: New Horizons', 'Simulation', 3899, 10, 3509, 1, 'Escape to a deserted island and create your own paradise.', 'https://i.pinimg.com/736x/24/c0/04/24c004f2ad8b218f0688e2f12ae1210f.jpg'),
+(16, 'Ghost of Tsushima', 'Action-Adventure', 3999, 25, 2999, 1, 'Samurai Jin Sakai must forge a new way of fighting to save Tsushima.', 'https://i.pinimg.com/736x/aa/65/be/aa65be39f98195b92ee2239b97c9866e.jpg'),
+(17, 'Resident Evil Village', 'Survival Horror', 2499, 40, 1499, 1, 'Experience survival horror like never before.', 'https://i.pinimg.com/736x/34/68/c8/3468c89a4354039d14a731df226f6c3c.jpg'),
+(18, 'Hollow Knight', 'Metroidvania', 479, 50, 239, 1, 'An epic action adventure through a vast ruined kingdom of insects.', 'https://i.pinimg.com/1200x/a8/52/da/a852da548162bd3a90b0ab1293ac49e3.jpg'),
+(19, 'Forza Horizon 5', 'Racing', 4799, 50, 2399, 1, 'Your ultimate Horizon Adventure awaits! Explore vibrant open world landscapes.', 'https://i.pinimg.com/1200x/cb/6f/e3/cb6fe35de2c4cdbf039ed2cb56ca58ad.jpg'),
+(20, 'Assetto Corsa', 'Racing', 4799, 50, 2399, 1, 'A racing simulator that offers the highest level of realism.', 'https://i.pinimg.com/1200x/cb/6f/e3/cb6fe35de2c4cdbf039ed2cb56ca58ad.jpg');

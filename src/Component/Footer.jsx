@@ -8,7 +8,7 @@ import { SiMastercard, SiRazorpay } from 'react-icons/si';
 
 const Footer = () => {
     return (
-        <footer className="bg-white text-gray-950 border-t border-gray-800">
+        <footer className="bg-white text-gray-950 border-t border-gray-300 ">
             {/*  Branding */}
             <div className="max-w-7xl mx-auto px-6 py-18 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 
