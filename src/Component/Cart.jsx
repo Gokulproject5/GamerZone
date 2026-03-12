@@ -57,6 +57,7 @@ export const Cart = () => {
         currency:"INR",
         name:"Gamer_Zone",
         description:"for Testing",
+        image: "https://i.ibb.co/chhHbTdn/Untitled-design-3.png",
         handler:function(response){
             alert(`Payment Successfull Payement id:${response.razorpay_payment_id}`
                 
